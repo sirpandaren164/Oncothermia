@@ -1,7 +1,7 @@
 window.COURSE_DATA = {
   "courseTitle": "Oncothermia e-Learning",
   "courseSubtitle": "WMC Interactive Training Course",
-  "slides": 90,
+  "slides": 96,
   "lessons": [
     {
       "id": "foundations",
@@ -42,6 +42,15 @@ window.COURSE_DATA = {
       "start": 75,
       "end": 90,
       "cover": 75
+    },
+    {
+      "id": "practical",
+      "title": "Practical Procedures",
+      "title_th": "ขั้นตอนปฏิบัติทั้งหมด",
+      "start": 91,
+      "end": 96,
+      "cover": 91,
+      "coverAsset": "assets/video/practical-001-waterbed-check-poster.jpg"
     }
   ],
   "titles": [
@@ -134,7 +143,13 @@ window.COURSE_DATA = {
     "Stop / Pause / Start",
     "ตรวจสอบหอควบคุมระหว่างการรักษา",
     "ตรวจสอบคอมพิวเตอร์ควบคุม",
-    "Reference / Flip-book"
+    "Reference / Flip-book",
+    "Practical Video 1: ขั้นตอนการตรวจสอบเตียงน้ำ",
+    "Practical Video 2: ขั้นตอนตรวจสอบ Probe (นิ้ว)",
+    "Practical Video 3: ขั้นตอนตรวจสอบ Probe (ฝ่ามือ)",
+    "Practical Video 4: ขั้นตอนการเปลี่ยน Probe",
+    "Practical Video 5: ขั้นตอนการวาง Probe บริเวณช่องท้อง",
+    "Practical Video 6: ขั้นตอนการวาง Probe บริเวณปอด"
   ],
   "questions": [
     {
@@ -321,5 +336,43 @@ window.COURSE_DATA = {
   "videoSlides": [
     19,
     20
-  ]
+  ],
+  "practicalVideos": {
+    "91": {
+      "title": "Practical Video 1: ขั้นตอนการตรวจสอบเตียงน้ำ",
+      "subtitle": "EHY-2000 Plus • Water Bed Check",
+      "src": "assets/video/practical-001-waterbed-check.mp4",
+      "poster": "assets/video/practical-001-waterbed-check-poster.jpg"
+    },
+    "92": {
+      "title": "Practical Video 2: ขั้นตอนตรวจสอบ Probe (นิ้ว)",
+      "subtitle": "EHY-2000 Plus • Probe Check (Finger)",
+      "src": "assets/video/practical-002-probe-finger-check.mp4",
+      "poster": "assets/video/practical-002-probe-finger-check-poster.jpg"
+    },
+    "93": {
+      "title": "Practical Video 3: ขั้นตอนตรวจสอบ Probe (ฝ่ามือ)",
+      "subtitle": "EHY-2000 Plus • Probe Check (Palm)",
+      "src": "assets/video/practical-003-probe-palm-check.mp4",
+      "poster": "assets/video/practical-003-probe-palm-check-poster.jpg"
+    },
+    "94": {
+      "title": "Practical Video 4: ขั้นตอนการเปลี่ยน Probe",
+      "subtitle": "EHY-2000 Plus • Probe Change",
+      "src": "assets/video/practical-004-probe-change.mp4",
+      "poster": "assets/video/practical-004-probe-change-poster.jpg"
+    },
+    "95": {
+      "title": "Practical Video 5: ขั้นตอนการวาง Probe บริเวณช่องท้อง",
+      "subtitle": "EHY-2000 Plus • Probe Placement: Abdomen",
+      "src": "assets/video/practical-005-probe-abdomen.mp4",
+      "poster": "assets/video/practical-005-probe-abdomen-poster.jpg"
+    },
+    "96": {
+      "title": "Practical Video 6: ขั้นตอนการวาง Probe บริเวณปอด",
+      "subtitle": "EHY-2000 Plus • Probe Placement: Lung",
+      "src": "assets/video/practical-006-probe-lung.mp4",
+      "poster": "assets/video/practical-006-probe-lung-poster.jpg"
+    }
+  }
 };

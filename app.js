@@ -103,7 +103,7 @@ function renderHome(){
   if(!profile)return renderSignin();
   $('welcomeName').textContent=profile.nameEn||profile.nameTh||'Learner';
   const grid=$('lessonGrid');
-  grid.innerHTML=D.lessons.map((l,i)=>`<button class="lessonCard" data-slide="${l.start}"><img src="assets/slides/slide-${String(l.cover).padStart(3,'0')}.png?v=7.0"><span class="copy"><b>${i+1}. ${l.title_th}</b><span>${l.title} • Slides ${l.start}–${l.end}</span></span></button>`).join('');
+  grid.innerHTML=D.lessons.map((l,i)=>{const cover=l.coverAsset?`${l.coverAsset}?v=23.0`:`assets/slides/slide-${String(l.cover).padStart(3,'0')}.png?v=23.0`;return `<button class="lessonCard" data-slide="${l.start}"><img src="${cover}"><span class="copy"><b>${i+1}. ${l.title_th}</b><span>${l.title} • Screens ${l.start}–${l.end}</span></span></button>`;}).join('');
   grid.querySelectorAll('button').forEach(b=>b.onclick=()=>openSlide(+b.dataset.slide));
   $('resumeBtn').style.display=(state.viewed||[]).length?'inline-block':'none';
   updateProgress();
@@ -125,14 +125,17 @@ function renderCourse(){
   $('slideTitle').textContent=D.titles[n-1]||`Slide ${n}`;
   $('screenCounter').textContent=`${n} / ${D.slides}`;
   const stage=$('slideStage');
-  if(D.videoSlides.includes(n)){
-    const src=`assets/video/slide-${String(n).padStart(3,'0')}.mp4?v=7.0`;
-    const poster=`assets/video/slide-${String(n).padStart(3,'0')}-poster.png?v=7.0`;
+  const practical=D.practicalVideos?.[String(n)];
+  if(practical){
+    stage.innerHTML=`<div class="videoWrap practicalVideoWrap"><video class="practicalVideo" controls playsinline preload="metadata" poster="${practical.poster}?v=23.0"><source src="${practical.src}?v=23.0" type="video/mp4">Your browser does not support HTML5 video.</video><div class="practicalVideoBadge"><b>Practical Video</b><span>${practical.subtitle||'EHY-2000 Plus'}</span></div></div>`;
+  }else if(D.videoSlides.includes(n)){
+    const src=`assets/video/slide-${String(n).padStart(3,'0')}.mp4?v=23.0`;
+    const poster=`assets/video/slide-${String(n).padStart(3,'0')}-poster.png?v=23.0`;
     stage.innerHTML=`<div class="videoWrap pptAnimation"><video class="pptVideo" autoplay loop muted playsinline preload="auto" poster="${poster}"><source src="${src}" type="video/mp4"></video><button class="replayBtn" type="button" aria-label="Replay animation">↻ Replay</button><button class="pauseBtn" type="button" aria-label="Pause animation">Ⅱ Pause</button></div>`;
     const v=stage.querySelector('.pptVideo');v.play().catch(()=>{});
     stage.querySelector('.replayBtn').onclick=()=>{v.currentTime=0;v.play().catch(()=>{});};
     stage.querySelector('.pauseBtn').onclick=e=>{if(v.paused){v.play().catch(()=>{});e.currentTarget.textContent='Ⅱ Pause';}else{v.pause();e.currentTarget.textContent='▶ Play';}};
-  }else stage.innerHTML=`<img src="assets/slides/slide-${String(n).padStart(3,'0')}.png?v=7.0" alt="Slide ${n}">`;
+  }else stage.innerHTML=`<img src="assets/slides/slide-${String(n).padStart(3,'0')}.png?v=23.0" alt="Slide ${n}">`;
   $('prevBtn').disabled=n===1;$('nextBtn').textContent=n===D.slides?'Final Exam →':'Next →';
   $('lessonDots').innerHTML=Array.from({length:l.end-l.start+1},(_,i)=>`<i class="${l.start+i===n?'on':''}"></i>`).join('');save();
 }

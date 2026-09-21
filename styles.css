@@ -470,3 +470,87 @@ main{background:linear-gradient(180deg,#f6fbfe 0%,#edf7fb 58%,#f7fcff 100%)!impo
     max-height:44%!important;
   }
 }
+
+
+/* v19: one-page A4 landscape certificate printing */
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+@media print {
+  html, body {
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .topbar,
+  .certTools,
+  #certLocked,
+  .toast,
+  #signinView,
+  #homeView,
+  #courseView,
+  #examView {
+    display: none !important;
+  }
+  #app,
+  main,
+  #certView,
+  #certReady {
+    display: block !important;
+    width: 297mm !important;
+    height: 210mm !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: hidden !important;
+  }
+  #certView {
+    position: fixed !important;
+    inset: 0 !important;
+  }
+  #certificate.certSource {
+    position: absolute !important;
+    left: 8.5mm !important;
+    top: 0 !important;
+    width: 280mm !important;
+    height: 210mm !important;
+    max-width: 280mm !important;
+    max-height: 210mm !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-before: avoid-page !important;
+    break-after: avoid-page !important;
+    break-inside: avoid-page !important;
+  }
+  .certSourceBg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+}
+
+
+/* v20: practical training video screens */
+.practicalVideoWrap{position:relative!important;background:#f6fbfe!important;padding:18px!important}
+.practicalVideo{display:block;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;background:#000;border-radius:14px;box-shadow:0 12px 34px rgba(17,64,100,.12)}
+.practicalVideoBadge{position:absolute;left:32px;top:30px;display:flex;flex-direction:column;gap:2px;background:rgba(255,255,255,.92);color:#17354d;border:1px solid rgba(23,53,77,.12);border-radius:12px;padding:8px 12px;box-shadow:0 8px 22px rgba(17,64,100,.10);pointer-events:none;backdrop-filter:blur(8px)}
+.practicalVideoBadge b{font-size:12px;color:#149bab}.practicalVideoBadge span{font-size:10px;color:#607889}
+@media(max-width:650px){.practicalVideoWrap{padding:6px!important}.practicalVideoBadge{left:14px;top:14px;padding:6px 9px}.practicalVideoBadge b{font-size:10px}.practicalVideoBadge span{font-size:8px}}

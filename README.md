@@ -1,3 +1,28 @@
+# Oncothermia WMC e-Learning v23
+
+Final Practical Procedures set completed.
+
+Lesson 6 now contains 6 practical procedure videos:
+1. Water Bed Check
+2. Probe Check (Finger)
+3. Probe Check (Palm)
+4. Probe Change
+5. Probe Placement — Abdomen
+6. Probe Placement — Lung
+
+Total course screens: 96.
+
+Version: v22 — Lesson 6 Practical Procedures separated from Lesson 5
+
+Version: v21 • Added Practical Video 2–3: Probe checks • 93 screens
+
+New practical videos in Lesson 5:
+- Practical Video 1: ขั้นตอนการตรวจสอบเตียงน้ำ
+- Practical Video 2: ขั้นตอนตรวจสอบ Probe (นิ้ว)
+- Practical Video 3: ขั้นตอนตรวจสอบ Probe (ฝ่ามือ)
+
+Version: v19 certificate prints on one A4 landscape page
+
 Version: v18 certificate watermark uses user-supplied bed+tower image
 
 Version: v17 certificate watermark = bed and tower
@@ -29,7 +54,7 @@ Version: v6 Light Hormone-style theme
 Static e-Learning site generated from the completed WMC Oncothermia presentation.
 
 ## Included
-- 5 lessons / 90 learning screens
+- 5 lessons / 93 learning screens
 - Progress saved in the learner browser (`localStorage`)
 - Full-screen slide viewer and keyboard navigation
 - Final Exam: 15 questions, pass mark 80%
