@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Certificate Verification | WMC</title>
+  <style>
+    :root{--bg:#f5fbfa;--ink:#0c3d38;--brand:#0f6b59;--gold:#c79b3b;--card:#ffffff;--muted:#5c6f69}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#f9fdfc,#eef7f5);color:var(--ink)}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 18px 40px}.head{display:flex;align-items:center;gap:14px;margin-bottom:18px}.logo{width:62px;height:62px;border-radius:50%;border:3px solid var(--brand);display:grid;place-items:center;color:var(--brand);font-weight:800;font-size:24px;background:#fff}.titles h1{margin:0;font-size:28px;color:var(--brand)}.titles p{margin:4px 0 0;color:var(--muted)}
+    .status{background:#ebfaf1;border:1px solid #b9e0c7;color:#17643f;padding:12px 16px;border-radius:14px;font-weight:700;margin:14px 0 22px}
+    .card{background:var(--card);border:1px solid rgba(15,107,89,.14);border-radius:22px;box-shadow:0 18px 48px rgba(15,64,59,.08);overflow:hidden}
+    .banner{padding:26px 28px;background:linear-gradient(135deg,#0f6b59,#13806b);color:#fff}.banner .small{letter-spacing:.08em;text-transform:uppercase;font-size:12px;opacity:.9}.banner h2{margin:8px 0 0;font-family:Georgia,serif;font-size:34px}
+    .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0}.main{padding:28px}.side{padding:28px;border-left:1px solid rgba(15,107,89,.10);background:#fbfdfc}
+    .label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}.name{font-family:Georgia,serif;font-size:34px;font-weight:700;color:var(--brand);line-height:1.08}.thai{font-size:22px;font-weight:700;color:var(--brand);margin-top:6px}.course{font-family:Georgia,serif;font-size:26px;font-weight:700;margin:18px 0 10px}.muted{color:var(--muted);font-size:15px}
+    .kv{display:grid;grid-template-columns:170px 1fr;gap:10px 12px;margin-top:18px;font-size:15px}.kv div:nth-child(odd){color:var(--muted)}
+    .idbox{border:1.5px solid rgba(199,155,59,.5);border-radius:16px;padding:18px 16px;background:#fff}.idbox h3{margin:0 0 12px;font-size:20px;color:var(--brand)}.idline{font-family:ui-monospace,monospace;font-size:16px;word-break:break-all}.pill{display:inline-block;margin-top:12px;padding:8px 12px;border-radius:999px;background:#f3faf8;color:var(--brand);font-weight:700;border:1px solid rgba(15,107,89,.15)}
+    .note{margin-top:18px;color:var(--muted);font-size:13px;line-height:1.45}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{appearance:none;border:none;border-radius:12px;padding:12px 16px;background:var(--brand);color:#fff;font-weight:700;cursor:pointer;text-decoration:none}.btn.alt{background:#fff;color:var(--brand);border:1px solid rgba(15,107,89,.22)}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.side{border-left:none;border-top:1px solid rgba(15,107,89,.10)}.banner h2{font-size:26px}.name{font-size:28px}.thai{font-size:18px}.kv{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <div class="logo">WMC</div>
+      <div class="titles">
+        <h1>Certificate Verification</h1>
+        <p>World Medical Hospital • WMC New Frontier Cancer Center</p>
+      </div>
+    </div>
+    <div class="status" id="status">Verified certificate data loaded</div>
+    <div class="card">
+      <div class="banner">
+        <div class="small">Verified Course Completion</div>
+        <h2>Oncothermia e-Learning Program</h2>
+      </div>
+      <div class="grid">
+        <section class="main">
+          <div class="label">Learner</div>
+          <div class="name" id="vName">—</div>
+          <div class="thai" id="vNameTh"></div>
+          <div class="course" id="vCourse">Oncothermia e-Learning Program</div>
+          <div class="muted">This page confirms the certificate information embedded in the issued QR code.</div>
+          <div class="kv">
+            <div>Certificate ID</div><div id="vCertId">—</div>
+            <div>Completed on</div><div id="vCompleted">—</div>
+            <div>Employee ID</div><div id="vEmployee">—</div>
+            <div>Position</div><div id="vPosition">—</div>
+            <div>Department</div><div id="vDepartment">—</div>
+          </div>
+        </section>
+        <aside class="side">
+          <div class="idbox">
+            <h3>Verification Status</h3>
+            <div class="idline" id="vCertId2">—</div>
+            <div class="pill">VERIFIED</div>
+            <div class="note">This verification page is generated from the certificate QR code in the static GitHub-hosted e-learning package.</div>
+            <div class="actions">
+              <button class="btn" onclick="window.print()">Print</button>
+              <a class="btn alt" href="index.html">Back to Course</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <script>
+    const qs=new URLSearchParams(location.search);
+    const data={
+      certId:qs.get('certId')||'', nameEn:qs.get('nameEn')||'', nameTh:qs.get('nameTh')||'',
+      course:qs.get('course')||'Oncothermia e-Learning Program', completed:qs.get('completed')||'',
+      employeeId:qs.get('employeeId')||'', position:qs.get('position')||'', department:qs.get('department')||''
+    };
+    const valid=Boolean(data.certId&&data.nameEn&&data.course&&data.completed);
+    const set=(id,v)=>document.getElementById(id).textContent=v||'—';
+    set('vName', data.nameEn); set('vNameTh', data.nameTh); set('vCourse', data.course); set('vCertId', data.certId); set('vCertId2', data.certId);
+    set('vCompleted', data.completed); set('vEmployee', data.employeeId); set('vPosition', data.position); set('vDepartment', data.department);
+    const status=document.getElementById('status');
+    if(!valid){
+      status.textContent='Verification data incomplete';
+      status.style.background='#fff5f5'; status.style.borderColor='#f3c7c7'; status.style.color='#8b2d2d';
+      document.querySelector('.pill').textContent='UNVERIFIED'; document.querySelector('.pill').style.background='#fff5f5'; document.querySelector('.pill').style.color='#8b2d2d';
+    }
+  </script>
+</body>
+</html>

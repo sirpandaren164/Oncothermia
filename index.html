@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6fbfe">
+  <title>Oncothermia e-Learning | WMC</title>
+  <link rel="stylesheet" href="styles.css?v=18.0">
+</head>
+<body class="signedOut">
+<div id="app">
+  <header class="topbar">
+    <button class="brand" id="homeBtn" aria-label="Course home">
+      <span class="brandMark">WMC</span>
+      <span><b>Oncothermia e‑Learning</b><small>Interactive Training Course</small></span>
+    </button>
+
+    <div class="progressWrap">
+      <div class="progressLabel"><span>COURSE PROGRESS</span><strong id="progressText">0%</strong></div>
+      <div class="progress"><i id="progressBar"></i></div>
+    </div>
+
+    <div class="learnerChip">
+      <span class="learnerAvatar" id="userInitials">WMC</span>
+      <span class="learnerInfo"><b id="userName">Learner</b><small id="userMeta"></small></span>
+      <button id="switchLearnerBtn" type="button">เปลี่ยนผู้เรียน</button>
+    </div>
+
+    <nav class="topActions">
+      <button id="fullscreenBtn" type="button">⛶ Full screen</button>
+      <button id="examBtn" type="button">📝 Final Exam</button>
+      <button id="certificateBtn" type="button">🏅 Certificate</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="signinView" class="view signinView">
+      <div class="signinHero">
+        <div class="kicker">WMC • ONCOTHERMIA TRAINING</div>
+        <h1>ONCOTHERMIA<br><span>e‑Learning</span></h1>
+        <p>ลงชื่อก่อนเข้าเรียน ระบบจะบันทึก progress และคะแนนแยกตามผู้เรียน และใช้ข้อมูลนี้ออก Certificate เมื่อเรียนครบและสอบผ่าน</p>
+        <div class="signinFeatures">
+          <span>✓ 90 learning screens</span>
+          <span>✓ Final Exam 15 ข้อ</span>
+          <span>✓ Pass ≥ 80%</span>
+          <span>✓ Certificate of Completion</span>
+        </div>
+        <div class="signinNotice">ข้อมูลผู้เรียนและความคืบหน้าถูกเก็บไว้ใน browser ของอุปกรณ์นี้ด้วย localStorage สำหรับ GitHub Pages แบบ static site</div>
+      </div>
+
+      <div class="signinPanel">
+        <div class="savedBox">
+          <div class="panelTitle"><span>ผู้เรียนที่เคยลงชื่อ</span><small>Continue learning</small></div>
+          <div id="savedLearners" class="savedLearners"></div>
+        </div>
+
+        <form id="signinForm" class="registrationCard">
+          <div class="panelTitle"><span>ลงทะเบียนผู้เรียน</span><small>New learner</small></div>
+          <div class="formGrid">
+            <label class="full">ชื่อ–นามสกุล (English) *<input id="regNameEn" autocomplete="name" placeholder="Full name in English" required></label>
+            <label class="full">ชื่อ–นามสกุล (ไทย)<input id="regNameTh" placeholder="ชื่อ–นามสกุล"></label>
+            <label>Employee ID *<input id="regEmployeeId" placeholder="เช่น WMC001" required></label>
+            <label>ตำแหน่ง *<input id="regPosition" placeholder="Position" required></label>
+            <label class="full">แผนก / Department *<input id="regDepartment" placeholder="Department" required></label>
+          </div>
+          <button class="primary signinSubmit" type="submit">ลงชื่อและเริ่มเรียน →</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="homeView" class="view homeView hidden">
+      <div class="heroCopy">
+        <div class="kicker">WMC • ONCOTHERMIA TRAINING</div>
+        <h1>ONCOTHERMIA<br><span>อองโคเทอร์เมียกับการรักษามะเร็ง</span></h1>
+        <p>e‑Learning สร้างจาก PowerPoint ฉบับที่จัดรูปแบบเสร็จแล้ว โดยคงเนื้อหาและภาพต้นฉบับ พร้อมระบบติดตามความคืบหน้า แบบทดสอบ และ Certificate</p>
+        <div class="welcomeLine">ยินดีต้อนรับ <b id="welcomeName"></b></div>
+        <div class="heroStats"><div><b>5</b><span>Lessons</span></div><div><b>90</b><span>Screens</span></div><div><b>15</b><span>Exam questions</span></div></div>
+        <div class="heroButtons"><button class="primary" id="startBtn" type="button">เริ่มเรียน →</button><button id="resumeBtn" type="button">เรียนต่อจากล่าสุด</button></div>
+      </div>
+      <div class="heroImage"><img src="assets/slides/slide-001.png?v=7.0" alt="Oncothermia course cover"></div>
+      <div class="lessonGrid" id="lessonGrid"></div>
+      <div class="sourceNote">เนื้อหาในคอร์สนี้ยึดตาม PPTX ต้นฉบับ รวมถึง evidence และ case examples ตามแหล่งข้อมูลและช่วงเวลาที่ปรากฏในต้นฉบับ</div>
+    </section>
+
+    <section id="courseView" class="view courseView hidden">
+      <aside class="lessonRail" id="lessonRail"></aside>
+      <div class="viewerColumn">
+        <div class="viewerMeta"><div><span id="lessonLabel"></span><b id="slideTitle"></b></div><span id="screenCounter"></span></div>
+        <div class="slideStage" id="slideStage"></div>
+        <div class="viewerControls"><button id="prevBtn" type="button">← Back</button><div class="dots" id="lessonDots"></div><button class="primary" id="nextBtn" type="button">Next →</button></div>
+      </div>
+    </section>
+
+    <section id="examView" class="view examView hidden">
+      <div class="examHeader"><div><div class="kicker">FINAL ASSESSMENT</div><h2>Final Exam</h2><p>15 ข้อ • เกณฑ์ผ่าน 80% • ทำซ้ำได้</p></div><div class="scoreBadge" id="scoreBadge">Not attempted</div></div>
+      <form id="examForm"></form>
+      <div class="examSubmit"><button type="button" class="primary" id="submitExamBtn">ส่งคำตอบ</button><button type="button" id="backCourseBtn">กลับบทเรียน</button></div>
+    </section>
+
+    <section id="certView" class="view certView hidden">
+      <div id="certLocked" class="locked"></div>
+      <div id="certReady" class="hidden">
+        <div class="certTools">
+          <div class="certLearnerSummary"><b id="certProfileName"></b><span>Certificate uses the learner profile from sign-in.</span></div>
+          <button id="printCertBtn" type="button">🖨 Print / Save PDF</button>
+        </div>
+                                <article class="certificate certSource" id="certificate">
+          <img class="certSourceBg" src="assets/certificate/certificate-template.png" alt="WMC certificate template">
+          <img class="certSourceMachineWm" src="assets/certificate/bed-tower-watermark-user.png" alt="Oncothermia machine watermark">
+          <div class="certSourceName" id="certName">Learner name</div>
+          <div class="certSourceNameTh" id="certThaiName"></div>
+          <div class="certSourceCourse">“Oncothermia e‑Learning Program”</div>
+          <div class="certSourceCourseTh">ได้ผ่านการเรียนและประเมินผลตามเกณฑ์กำหนดของหลักสูตรเรียบร้อยแล้ว</div>
+
+          <div class="certSourceSignatureBlock">
+            <img class="certSourceSignature" src="assets/certificate/signature-asawadech.png" alt="signature">
+            <div class="certSourceSigLine"></div>
+            <div class="certSourceSigner">Asawadech Sanbua, M.D.</div>
+            <div class="certSourceSignerTh">นพ. อัศวเดช แสนบัว</div>
+            <div class="certSourceRole">Radiation Oncology and Oncology</div>
+            <div class="certSourceRoleTh">รังสีรักษาและมะเร็งวิทยา</div>
+          </div>
+
+          <div class="certSourceVerify">
+            <div class="certSourceQRWrap">
+              <img class="certSourceQRImg" id="certQrImg" alt="Certificate QR code">
+              <div class="certSourceQRFallback hidden" id="certQrFallback">QR</div>
+            </div>
+            <div class="certSourceVerifyInfo">
+              <div class="certSourceVerifyTitle">Certificate<br>Verification</div>
+              <div class="certSourceVerifyId" id="certId">CERT-0000</div>
+              <div class="certSourceVerifyDate" id="certDate">1 January 2026</div>
+              <div class="certSourceVerifyMeta">Employee ID <b id="certEmployeeId"></b></div>
+              <div class="certSourceVerifyMeta certSourceVerifyMeta2"><span id="certPosition"></span> • <span id="certDepartment"></span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="course-data.js?v=18.0"></script>
+<script src="app.js?v=18.0"></script>
+</body>
+</html>
